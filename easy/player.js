@@ -50,6 +50,7 @@ window.player = {
             recognition.start();
            recognition.onend = ()=>{
                 this.update();
+                this.audio.play();
             }
             
         });
