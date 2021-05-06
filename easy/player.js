@@ -1,15 +1,37 @@
-window.player = {
-    cover: document.querySelector(".card-image"),
-    title: document.querySelector(".card-content h5"),
-    artist: document.querySelector(".artist"),
-    audio: document.querySelector("audio"),
+import {path} from "./utils.js";
+import audios from "./data.js";
+import elements from "./playerElements.js"
+export default {
     audioData: audios,
     result1:{},
     currentAudio: {},
     currentPlaying: 0,
+    isPlaying: false,
     start(){
+        
+        elements.get.call(this);
+        elements.actions.call(this);
+        elements.botao.call(this);
         this.update();
         this.audio.onended = () => this.next();
+    },
+    play(){
+        this.isPlaying = true;
+        this.audio.play();
+        this.playPause.innerText = "pause"
+    },
+    pause(){
+        this.isPlaying = false;
+        this.audio.pause();
+        this.playPause.innerText = "play_arrow";
+    },
+    togglePlayPause(){
+        console.log('startou')
+        if(this.isPlaying){
+            this.pause();
+        }else{
+            this.play();
+        }
     },
     next(){
         this.currentPlaying++;
@@ -17,14 +39,14 @@ window.player = {
         this.update();
     },
     update(){
-        this.capAud();
+       
         this.currentAudio = this.audioData[this.currentPlaying];
         this.cover.style.background = `url('${path(
             this.currentAudio.cover
         )}') no-repeat center center / cover`;
         this.title.innerText = this.currentAudio.title;
         this.artist.innerText = this.currentAudio.artist;
-        this.audio.src = path(this.currentAudio.file);
+        elements.createAudio.call(this, path(this.currentAudio.file))
         console.log(this.currentPlaying);
     },
     restart(){
@@ -32,27 +54,26 @@ window.player = {
         this.update();
     },
     capAud(){
-        document.querySelector(".mudar").addEventListener("click",()=> {
+        console.log("boooo");
             var recognition = new webkitSpeechRecognition();
             recognition.lang = "pt-BR";
-            recognition.onresult = function(event){
+            recognition.onresult = (event) => {
                 var busca = event.results[0][0].transcript.trim().toLowerCase();
                 if(busca.indexOf("mudar para") > -1 ){
                     busca = busca.substring(11,busca.length); 
                     console.log(busca);
-                    for (var i = 0; i < player.audioData.length; i++) {
-                        if(player.audioData[i].title==busca){
-                            player.currentPlaying=i;
+                    for (var i = 0; i < this.audioData.length; i++) {
+                        if(this.audioData[i].title==busca){
+                            this.currentPlaying=i;
                         }
                     }
                 } 
             }
             recognition.start();
-           recognition.onend = ()=>{
+            recognition.onend = ()=>{
                 this.update();
-                this.audio.play();
+                this.play();
             }
             
-        });
     }
 }; 

@@ -1,15 +1,15 @@
-window.audios = [
-  {
-    title:"caminho",
-    artist: "Edi Rock",
-    cover: "tmw-image.jpg",
-    file: "rock.mp3"
-  },
+export default [
   {
     title: "triste",
     artist: "Khalifa",
     cover: "khalifa.jpg",
     file: "triste.mp3"
+  },
+  {
+    title:"caminho",
+    artist: "Edi Rock",
+    cover: "tmw-image.jpg",
+    file: "rock.mp3"
   },
   {
     title: "jogo",
