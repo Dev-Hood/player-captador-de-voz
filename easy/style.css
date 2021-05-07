@@ -12,22 +12,33 @@ body{
     align-items: center;
     justify-content: center;
 }
+.card-background img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+   
+}
+.card-background{
+    width: 375px;
+    height: 511px;
+    z-index: -1;
+    position: absolute;
+}
 #player{
-    background-color: rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0);
     width: 90%;
     max-width: 375px;
     box-shadow: 0px 2px 2px 0px var(--primary-shadow),
     0px 3px 1px -2px var(--primary-shadow),
-    
-           0px 1px 5px 0px var(--primary-shadow);
+    0px 1px 5px 0px var(--primary-shadow);
 }
 .card{
+    background-color: rgba(255, 0, 0, 0);
     box-shadow: none;
     margin: 0;
 }
 h4{
     font-family: "Manrope";
-    text-transform: uppercase;
     color: rgb(8, 197, 255);
     font-size: 20px;
     font-weight: bold;
@@ -40,17 +51,85 @@ h4{
 .card-image{
     background: url("https://placehold.it/500") no-repeat center / cover;
     height: 200px;
+    transform: scale(0.90);
+    box-shadow: 0px 2px 2px 0px var(--primary-shadow),
+    0px 3px 1px -2px var(--primary-shadow),
+    0px 1px 5px 0px var(--primary-shadow);
 }
 audio{
     width: 100%;
     margin-top: 30px;
 }
 #play-pause{
-    background-color: rgb(8, 197, 255);
+    background-color: var(--primary);
+    text-shadow: 1px 3px 1px rgb(0, 0, 0);
 }
-#vol{
+.btn-floating{
+    box-shadow: 0px 2px 2px 0px var(--primary-shadow),
+    0px 3px 1px -2px var(--primary-shadow),
+    0px 1px 5px 0px var(--primary-shadow);
+    transition: border-radius 0.5s;
+}
+.btn-floating:hover {
+    box-shadow: 0px 2px 2px 0px var(--primary-shadow),
+    0px 3px 1px -2px var(--primary-shadow),
+    0px 1px 5px 0px var(--primary-shadow);
+    border-radius: 1.3rem;
+}
+#mute{
     color: var(--primary);
+    transform: translateY(2px);
 }
 input[type="range"]::-webkit-slider-thumb{
     background-color: var(--primary);
+}
+#mudar{
+    box-shadow: 0px 2px 2px 0px var(--primary-shadow),
+    0px 3px 1px -2px var(--primary-shadow),
+    0px 1px 5px 0px var(--primary-shadow);
+    border-radius: 10px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: var(--primary);
+    font-family:"Manrope" ;
+    font-size: 17px;
+    color: white;
+    padding: 0.7rem 0.6rem;
+    cursor: pointer;
+}
+#mudar:hover{
+    transform: scale(0.9);
+}
+#mic{
+    color: white;
+}
+h5{
+    font-family: "Manrope";
+    font-size: 25px;
+    font-weight: bold;
+}
+.titulo-music{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#music_note{
+    font-size: 30px;
+    font-weight: bold;
+    transform: translateY(2px);
+}
+.artist{
+    font-family: "Manrope";
+    font-weight: bold;
+    font-size: 17px;
+    display: flex;
+    justify-content: center;
+}
+.row.valign-wrapper{
+    padding-top: 30px;
 }
