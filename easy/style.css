@@ -19,7 +19,8 @@ body{
    
 }
 .card-background{
-    width: 375px;
+    width: 90%;
+    max-width: 375px;
     height: 511px;
     z-index: -1;
     position: absolute;
